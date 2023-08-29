@@ -12,7 +12,7 @@ import Message from '@/utils/ElementUIMsg';
 
 const app = createApp(App);
 const pinia = createPinia();
-
+pinia.use(piniaPluginPersist);
 
 app.config.globalProperties.$message = Message;
 

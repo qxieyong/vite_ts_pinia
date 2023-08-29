@@ -8,7 +8,7 @@
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
-const pcRouters = [
+const routes = [
   {
     path: '/',
     name: 'index',
@@ -20,9 +20,6 @@ const pcRouters = [
   },
 ];
 
-
-// @ts-ignore
-const routes: Array<RouteRecordRaw> = !isMobile() ? pcRouters : ydRouters
 const router = createRouter({
   history: createWebHistory(),
   routes,

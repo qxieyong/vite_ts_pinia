@@ -7,8 +7,14 @@ import router from './router';
 import App from './App.vue';
 import VueI18n from './utils/language';
 
+// 引入字体包文件
+import '@/assets/font/index.css';
+
 // 引入修改的msg
 import Message from '@/utils/ElementUIMsg';
+
+// 引入css适配
+import '@/utils/adaptation.js';
 
 const app = createApp(App);
 const pinia = createPinia();

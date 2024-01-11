@@ -10,7 +10,8 @@
         var docEle = document.documentElement,
             w = docEle.clientWidth,
             num = (w > 1920 ? 1920 : w) / 1920;       // **此时的1920就是你设计稿的尺寸
-        docEle.style.fontSize = (num * 100).toFixed(1) + 'px';
+        let fontSize = num * 100 > 70 ? 70 : num * 100 < 30 ? 30 : num * 100; 
+        docEle.style.fontSize = fontSize.toFixed(1) + 'px';
     };
     recalCulate();
     if (!doc.addEventListener) return;

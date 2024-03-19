@@ -37,7 +37,7 @@ export default defineConfig({
       threshold: 1024 * 1024 * 5 // 对大于 5MB 的文件进行压缩
     })
   ],
-  build: {
+ build: {
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -46,6 +46,30 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    rollupOptions:{
+      output:{
+        entryFileNames:"js/[name]-[hash].js",  //入口js文件存放
+        chunkFileNames:"js/[name]-[hash].js", //其他js文件存放
+        assetFileNames(assetInfo){ //其他文件的配置
+          if(assetInfo.name.endsWith('.css')){
+            return 'css/[name]-[hash].css';
+          }
+          const imgExts = ['.png','.jpg','.jpeg','webp','.svg','.gif','.ico'];
+          if(imgExts.some(ext=>assetInfo.name.endsWith(ext))){
+            return 'img/[name]-[hash].[ext]';
+          }
+          return "assets/[name]-[hash].[ext]"
+        },
+        manualChunks(id){
+          console.log(id);
+          if(id.includes('node_modules')){
+            return 'vendor';
+          }
+        }
+      }
+      
+    }
+    
   },
   resolve: {
     alias: {

@@ -8,11 +8,13 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
     'ecmaVersion': 'latest',
     'sourceType': 'module',
-    'project': ['./tsconfig.json']
+    'parser': '@typescript-eslint/parser',
+    'project': ['./tsconfig.json'],
+    'extraFileExtensions': ['.vue']
   },
   plugins: [
     '@typescript-eslint'
@@ -31,8 +33,9 @@ module.exports = {
       project: ['./tsconfig.json'],
     },
   }],
+  // 0：关闭，1：警告，2：禁止   或者：off/warn/error
   rules: {
-    'max-len': ['error', { 'code': 80 }], // 将一行代码的最大长度设置为 80 个字符
+    'max-len': ['error', { 'code': 150 }], // 将一行代码的最大长度设置为 150 个字符
     'keyword-spacing': ['error', {
       after: true,
       overrides: {
@@ -67,6 +70,8 @@ module.exports = {
         ]
       }
     ],
+    'vue/multi-word-component-names': 'off', // vue组件模板名称
+    'no-explicit-any':'off',
     'camelcase': 'error', // 将变量和函数名的命名规范设置为错误级别
     'space-before-function-paren': ['error', 'never'],  // 要求函数括号前面不能有空格。
     'guard-for-in': 'off', //检查属性是否为对象自身的属性
@@ -100,6 +105,7 @@ module.exports = {
     'no-unexpected-multiline': 'error', //禁止出现意外的多行代码。
     'no-return-await': 'error', //禁止在 return 语句中使用不必要的 `await
     '@typescript-eslint/await-thenable': 'error',
-    '@typescript-eslint/no-misused-promises': ['error', {checksConditionals: true, checksVoidReturn: true, checksSpreads: true}]
+    '@typescript-eslint/no-misused-promises': ['error', {checksConditionals: true, checksVoidReturn: true, checksSpreads: true}],
+    "complexity": ["error", { "max": 10 }] //将圈复杂度的最大值设为10
   }
 };

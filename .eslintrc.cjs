@@ -53,7 +53,7 @@ module.exports = {
 			}
 		],
 		"object-curly-spacing": ["error", "always"],
-		"linebreak-style": ["error", "unix"], // 设置换行符的风格为 Unix 格式，如果检测到 Windows 格式的换行符则会报错。
+		"linebreak-style": ["error", "windows"], // 设置换行符的风格为 Unix 格式，如果检测到 Windows 格式的换行符则会报错。
 		"eol-last": "off", // 要求文件末尾必须有换行符，如果文件末尾没有换行符则会报错。
 		indent: [
 			"error",

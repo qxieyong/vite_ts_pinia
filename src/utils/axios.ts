@@ -3,7 +3,7 @@ import axios from "axios";
 
 // 使用create方法创建axios实例
 const service = axios.create({
-	baseURL: "/chat"
+	baseURL: "/api"
 	// timeout: 20000, // 请求超时时间
 });
 

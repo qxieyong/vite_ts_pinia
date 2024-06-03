@@ -25,7 +25,8 @@ module.exports = {
 		"src/opus-recorder/**",
 		"public/**",
 		"dist",
-		".eslintrc.cjs"
+		".eslintrc.cjs",
+		"vite.config.ts"
 	], // 忽略检查
 	overrides: [
 		{

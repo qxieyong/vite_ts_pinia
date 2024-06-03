@@ -133,6 +133,25 @@ module.exports = {
 		"operator-linebreak": ["off"],
 		"@typescript-eslint/no-empty-function": "off",
 		"vue/prop-name-casing": ["error", "camelCase"], // 强制 prop 名称使用驼峰式命名
-		"vue/attribute-hyphenation": "off" // 禁用 vue/attribute-hyphenation 规则
+		"vue/attribute-hyphenation": "off", // 禁用 vue/attribute-hyphenation 规则
+		"newline-per-chained-call": ["error", { ignoreChainWithDepth: 4 }], // 这里的 2 是可以根据需要调整的深度
+		"import/order": [
+			"error",
+			{
+				groups: [
+					"builtin", // Node.js builtins
+					"external", // External packages
+					"internal", // Internal modules
+					["parent", "sibling", "index"], // Parent, sibling, and index imports
+					"object", // Imports of objects
+					"type" // Type imports
+				],
+				"newlines-between": "always", // Ensure there's a newline between groups
+				alphabetize: {
+					order: "asc", // Sort imports alphabetically
+					caseInsensitive: true // Ignore case when sorting
+				}
+			}
+		]
 	}
 };

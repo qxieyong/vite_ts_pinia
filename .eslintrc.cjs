@@ -19,15 +19,7 @@ module.exports = {
 		extraFileExtensions: [".vue"]
 	},
 	plugins: ["@typescript-eslint", "prettier"],
-	ignorePatterns: [
-		"src/vendor/**",
-		"src/solid/**",
-		"src/opus-recorder/**",
-		"public/**",
-		"dist",
-		".eslintrc.cjs",
-		"vite.config.ts"
-	], // 忽略检查
+	ignorePatterns: ["src/vendor/**", "src/solid/**", "src/opus-recorder/**", "public/**", "dist", ".eslintrc.cjs", "vite.config.ts","src/vite-env.d.ts"], // 忽略检查
 	overrides: [
 		{
 			files: ["*.ts"],

@@ -16,6 +16,12 @@ import Message from "@/utils/ElementUIMsg";
 // 引入css适配
 import "@/utils/adaptation.js";
 
+import updateWebsite from "@/utils/updateWebsite";
+
+if(import.meta.env.MODE != "development"){
+    updateWebsite();
+}
+
 const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersist);

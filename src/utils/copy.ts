@@ -6,10 +6,10 @@ const copy = (val: string, text?: string) => {
 		navigator.clipboard
 			.writeText(val)
 			.then(_res => {
-				ElMessage.success(text || t("header.inviteCopy"));
+				new ElMessage().success(text || t("header.inviteCopy"));
 			})
 			.catch(_e => {
-				ElMessage.error(t("global.error"));
+				new ElMessage().error(t("global.error"));
 			});
 	} else {
 		const input: HTMLInputElement = document.createElement("input");
@@ -18,7 +18,7 @@ const copy = (val: string, text?: string) => {
 		input.select();
 		document.execCommand("Copy");
 		document.body.removeChild(input);
-		ElMessage.success(text || t("header.inviteCopy"));
+		new ElMessage().success(text || t("header.inviteCopy"));
 	}
 };
 

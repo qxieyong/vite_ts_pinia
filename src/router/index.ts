@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const routes = [
+export  const routes = [
 	{
 		path: "/",
 		name: "index",
@@ -10,7 +10,7 @@ const routes = [
 		path: "/:pathMatch(.*)",
 		redirect: "/"
 	}
-];
+] as const;
 
 const router = createRouter({
 	history: createWebHistory(),

@@ -6,20 +6,27 @@ const showMessage = Symbol("showMessage");
  *  重写ElementUI的Message
  *  single默认值true，因为项目需求，默认只弹出一个，可以根据实际需要设置
  */
+type MessageType = "success" | "warning" | "info" | "error";
+
+interface MessageOptions {
+	message: string;
+	duration?: number;
+}
+
 class Message {
-	success(options: any, single = true) {
+	success(options: string | MessageOptions, single = true) {
 		this[showMessage]("success", options, single);
 	}
-	warning(options: any, single = true) {
+	warning(options: string | MessageOptions, single = true) {
 		this[showMessage]("warning", options, single);
 	}
-	info(options: any, single = true) {
+	info(options: string | MessageOptions, single = true) {
 		this[showMessage]("info", options, single);
 	}
-	error(options: any, single = true) {
+	error(options: string | MessageOptions, single = true) {
 		this[showMessage]("error", options, single);
 	}
-	[showMessage](type: string | number, options: any, single: any) {
+	[showMessage](type: MessageType, options: string | MessageOptions, single: boolean) {
 		console.log(type, options, single);
 		if (single) {
 			// 判断是否已存在Message
@@ -45,4 +52,6 @@ class Message {
 // 警告调用方式：proxy.$message.warning(options);
 // 提示调用方式：proxy.$message.info(options);
 
-export default new Message();
+// const message = new Message();
+
+export default Message;

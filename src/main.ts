@@ -15,11 +15,18 @@ import Message from "@/utils/ElementUIMsg";
 
 // 引入css适配
 import "@/utils/adaptation.js";
+import updateWebsite from "./utils/updateWebsite";
+
+
+if (import.meta.env.MODE != "development") {
+	updateWebsite();
+}
+
 
 const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersist);
 
-app.config.globalProperties.$message = Message;
+app.config.globalProperties.$message = new Message();
 
-app.use(VueI18n).use(router).use(pinia).mount("#app");
+app.use(pinia).use(router).use(VueI18n).mount("#app");

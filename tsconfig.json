@@ -28,6 +28,6 @@
     "noImplicitAny": false // 是否不允许隐式的any，默认值是false
     
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],  //指定哪些文件(js也可以通过allowJs配置可以编译，所以不只是ts文件)需要被编译
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/utils/types"],  //指定哪些文件(js也可以通过allowJs配置可以编译，所以不只是ts文件)需要被编译
   "references": [{ "path": "./tsconfig.node.json" }]
 }

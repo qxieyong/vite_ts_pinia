@@ -19,14 +19,7 @@ module.exports = {
 		extraFileExtensions: [".vue"]
 	},
 	plugins: ["@typescript-eslint", "prettier"],
-	ignorePatterns: [
-		"src/vendor/**",
-		"src/solid/**",
-		"src/opus-recorder/**",
-		"public/**",
-		"dist",
-		".eslintrc.cjs"
-	], // 忽略检查
+	ignorePatterns: ["src/vendor/**", "src/solid/**", "src/opus-recorder/**", "public/**", "dist", ".eslintrc.cjs", "vite.config.ts","src/vite-env.d.ts"], // 忽略检查
 	overrides: [
 		{
 			files: ["*.ts"],
@@ -53,7 +46,7 @@ module.exports = {
 			}
 		],
 		"object-curly-spacing": ["error", "always"],
-		"linebreak-style": ["error", "windows"], // 设置换行符的风格为 Unix 格式，如果检测到 Windows 格式的换行符则会报错。
+		"linebreak-style": ["error", "unix"], // 设置换行符的风格为 Unix 格式，如果检测到 Windows 格式的换行符则会报错。
 		"eol-last": "off", // 要求文件末尾必须有换行符，如果文件末尾没有换行符则会报错。
 		indent: [
 			"error",
@@ -133,6 +126,25 @@ module.exports = {
 		"operator-linebreak": ["off"],
 		"@typescript-eslint/no-empty-function": "off",
 		"vue/prop-name-casing": ["error", "camelCase"], // 强制 prop 名称使用驼峰式命名
-		"vue/attribute-hyphenation": "off" // 禁用 vue/attribute-hyphenation 规则
+		"vue/attribute-hyphenation": "off", // 禁用 vue/attribute-hyphenation 规则
+		"newline-per-chained-call": ["error", { ignoreChainWithDepth: 4 }], // 这里的 2 是可以根据需要调整的深度
+		"import/order": [
+			"error",
+			{
+				groups: [
+					"builtin", // Node.js builtins
+					"external", // External packages
+					"internal", // Internal modules
+					["parent", "sibling", "index"], // Parent, sibling, and index imports
+					"object", // Imports of objects
+					"type" // Type imports
+				],
+				"newlines-between": "always", // Ensure there's a newline between groups
+				alphabetize: {
+					order: "asc", // Sort imports alphabetically
+					caseInsensitive: true // Ignore case when sorting
+				}
+			}
+		]
 	}
 };

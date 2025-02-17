@@ -23,6 +23,12 @@ if (import.meta.env.MODE != "development") {
 }
 
 
+import updateWebsite from "@/utils/updateWebsite";
+
+if(import.meta.env.MODE != "development"){
+    updateWebsite();
+}
+
 const app = createApp(App);
 const pinia = createPinia();
 pinia.use(piniaPluginPersist);

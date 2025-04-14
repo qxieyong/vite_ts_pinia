@@ -14,19 +14,11 @@ import "@/assets/font/index.css";
 import Message from "@/utils/ElementUIMsg";
 
 // 引入css适配
-import "@/utils/adaptation.js";
+import "@/utils/adaptation";
 import updateWebsite from "./utils/updateWebsite";
-
 
 if (import.meta.env.MODE != "development") {
 	updateWebsite();
-}
-
-
-import updateWebsite from "@/utils/updateWebsite";
-
-if(import.meta.env.MODE != "development"){
-    updateWebsite();
 }
 
 const app = createApp(App);

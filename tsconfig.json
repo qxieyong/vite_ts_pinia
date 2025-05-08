@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2020",  //指定ts文件编译成ES的哪个版本的js文件
+    "target": "ESNext",  //指定ts文件编译成ES的哪个版本的js文件
     "useDefineForClassFields": true,
     "module": "ESNext",  //指定生成js文件使用的模块化规范。
-    "lib": ["ES2020", "DOM", "DOM.Iterable"], //用来指定项目中要使用的库
+    "lib": ["ESNext", "DOM", "DOM.Iterable"], //用来指定项目中要使用的库
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -28,6 +28,6 @@
     "noImplicitAny": false // 是否不允许隐式的any，默认值是false
     
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/utils/types"],  //指定哪些文件(js也可以通过allowJs配置可以编译，所以不只是ts文件)需要被编译
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],  //指定哪些文件(js也可以通过allowJs配置可以编译，所以不只是ts文件)需要被编译
   "references": [{ "path": "./tsconfig.node.json" }]
 }

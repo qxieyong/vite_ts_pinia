@@ -52,6 +52,6 @@ class Message {
 // 警告调用方式：proxy.$message.warning(options);
 // 提示调用方式：proxy.$message.info(options);
 
-// const message = new Message();
+const message = new Message();
 
-export default Message;
+export default message;

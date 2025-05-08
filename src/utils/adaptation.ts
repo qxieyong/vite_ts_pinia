@@ -7,10 +7,10 @@
 		resizeEvent = "orientationchange" in window ? "orientationchange" : "resize"; // orientationchange 屏幕方向变化
 
 	const recalCulate = function () {
-		const docEle = document.documentElement,
-			w = docEle.clientWidth,
-			num = w / designWidth;
-		const fontSize = num * 100 > 70 ? 70 : num * 100 < 30 ? 30 : num * 100;
+		const docEle = document.documentElement;
+		const w = docEle.clientWidth;
+		const num = (w / designWidth) * 100;
+		const fontSize = num > 70 ? 70 : num < 30 ? 30 : num;
 		docEle.style.fontSize = fontSize.toFixed(1) + "px";
 	};
 	recalCulate();

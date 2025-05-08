@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from "path";
 import Icons from 'unplugin-icons/vite'
@@ -11,6 +11,7 @@ import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd(), 'VITE_');
     return {
         server: {
             //hmr: { overlay: false },
@@ -19,12 +20,12 @@ export default defineConfig(({ mode }) => {
             port: 5174, // 端口号
             host: "0.0.0.0",
             proxy: {
-                "/api": {
-                    target: "", // 后台接口
+                [env.VITE_BASE_URL]: {
+                    target: env.VITE_PROXY_TARGET,
                     changeOrigin: true,
                     secure: false, // 如果是https接口，需要配置这个参数
                     // ws: true, //websocket支持
-                    rewrite: (path) => path.replace(/^\/api/, ""),
+                    rewrite: (path) => path.replace(new RegExp(`^${env.VITE_BASE_URL}`), '')
                 },
             },
         },

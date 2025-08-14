@@ -13,7 +13,7 @@ interface MessageOptions {
 	duration?: number;
 }
 
-class Message {
+export class Message {
 	success(options: string | MessageOptions, single = true) {
 		this[showMessage]("success", options, single);
 	}

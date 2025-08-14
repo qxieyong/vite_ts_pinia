@@ -1,5 +1,6 @@
 // 语言
 import { createI18n } from "vue-i18n"; // 引入vue-i18n组件
+
 import CH from "./lang/CH";
 import EN from "./lang/EN";
 const langs = ["CH", "EN"];

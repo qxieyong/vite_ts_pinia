@@ -1,23 +1,24 @@
 /**
- * 
+ * 防抖函数
  * @param func 需要防抖的函数
  * @param delay 时间
  * @param immediate 是否立即执行
- * @returns 
+ * @returns
  */
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number = 300, immediate: boolean = false): (...args: Parameters<T>) => void {
+/* eslint-disable-next-line space-before-function-paren */
+function debounce<T extends (..._args: any[]) => void>(func: T, delay = 300, immediate = false): (..._args: Parameters<T>) => void {
 	let timer: ReturnType<typeof setTimeout> | null = null;
-	return function (...args: Parameters<T>) {
+	return function (..._args: Parameters<T>) {
 		if (timer) clearTimeout(timer);
 
 		if (immediate && !timer) {
 			// 立即执行一次
-			func(...args);
+			func(..._args);
 		}
 
 		timer = setTimeout(() => {
 			if (!immediate) {
-				func(...args);
+				func(..._args);
 			}
 			timer = null;
 		}, delay);

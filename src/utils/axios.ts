@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, CancelTokenSource } from "axios";
+import axios, { AxiosInstance, AxiosResponse, CancelTokenSource } from "axios";
 
 // 动态设置 baseURL
 const baseURL = import.meta.env.VITE_BASE_URL; // 开发环境默认值
@@ -86,13 +86,12 @@ type ResponseBody = {
 
 // POST 请求封装
 export function axiosPost<T = ResponseBody>(url: string, params: any): Promise<T> {
-	return service.post(url, params).then(response => response.data);
+	return service.post(url, params).then(response => response as T);
 }
 
 // GET 请求封装
 export function axiosGet<T = ResponseBody>(url: string, params?: any): Promise<T> {
-	console.log("baseURL", baseURL);
-	return service.get(url, { params }).then(response => response.data);
+	return service.get(url, { params }).then(response => response as T);
 }
 
 // 批量请求封装

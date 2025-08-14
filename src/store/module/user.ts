@@ -19,7 +19,7 @@ export default defineStore("user", {
 		strategies: [
 			{
 				storage: localStorage,
-				paths: ["isLogin", "token"]
+				paths: ["token"]
 			}
 		]
 	}

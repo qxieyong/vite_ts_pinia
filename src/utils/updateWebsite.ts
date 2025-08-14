@@ -3,7 +3,7 @@ const updateWebsite = () => {
 		.then(response => response.text())
 		.then(data => {
 			const dom = new DOMParser().parseFromString(data, "text/html");
-			const scripts = dom.querySelectorAll('script[type="module"]') as unknown as HTMLScriptElement[];
+			const scripts = dom.querySelectorAll(`script[type="module"]`) as unknown as HTMLScriptElement[];
 			scripts.forEach(script => {
 				if (script.src.includes(window.location.origin)) {
 					const currentVersion = window.localStorage.getItem("version");

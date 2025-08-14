@@ -4,12 +4,13 @@
 		<i-ep-CircleCheckFilled />
 		<i-ep-EditPen />
 		<p class="">{{ user.token }}</p>
+		<p>{{ t("copySuccess") }}</p>
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { getCurrentInstance } from "vue";
-// import { useI18n } from "vue-i18n";
+import { useI18n } from "vue-i18n";
 
 import { getHome as _getHome } from "@/api";
 import useStore from "@/store";
@@ -17,7 +18,7 @@ import useStore from "@/store";
 import throttle from "@/utils/throttle";
 
 const { user } = useStore();
-// const { t } = useI18n();
+const { t } = useI18n();
 const { proxy } = getCurrentInstance()!;
 // @ts-ignore
 proxy?.$message.success("成功");

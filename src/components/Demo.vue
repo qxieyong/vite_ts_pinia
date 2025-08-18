@@ -20,7 +20,6 @@ import throttle from "@/utils/throttle";
 const { user } = useStore();
 const { t } = useI18n();
 const { proxy } = getCurrentInstance()!;
-// @ts-ignore
 proxy?.$message.success("成功");
 
 // const test = debounce(() => console.log("防抖执行"), 500, false);

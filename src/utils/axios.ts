@@ -37,8 +37,9 @@ service.interceptors.request.use(
 
 		// 添加请求取消支持
 		if (config.url) {
-			cancelTokens[config.url] = axios.CancelToken.source();
-			config.cancelToken = cancelTokens[config.url].token;
+			const key = `${config.url.split('?')[0]}`;
+			cancelTokens[key] = axios.CancelToken.source();
+			config.cancelToken = cancelTokens[key].token;
 		}
 
 		return config;
@@ -90,8 +91,10 @@ export function axiosPost<T = ResponseBody>(url: string, params: any): Promise<T
 }
 
 // GET 请求封装
-export function axiosGet<T = ResponseBody>(url: string, params?: any): Promise<T> {
-	return service.get(url, { params }).then(response => response as T);
+export function axiosGet<T = ResponseBody>(url: string, params: any): Promise<T> {
+	const queryString = new URLSearchParams(params).toString();
+	const queryStringWithPrefix = queryString ? `?${queryString}` : '';
+	return service.get(`${url}${queryStringWithPrefix}`).then(response => response as T);
 }
 
 // 批量请求封装

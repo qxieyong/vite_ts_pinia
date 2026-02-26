@@ -91,7 +91,10 @@ export function axiosPost<T = ResponseBody>(url: string, params: any): Promise<T
 
 // GET 请求封装
 export function axiosGet<T = ResponseBody>(url: string, params?: any): Promise<T> {
-	return service.get(url, { params }).then(response => response as T);
+	if (params) {
+		url += "?" + new URLSearchParams(params).toString();
+	}
+	return service.get(url).then(response => response as T);
 }
 
 // 批量请求封装

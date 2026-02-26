@@ -37,8 +37,9 @@ service.interceptors.request.use(
 
 		// 添加请求取消支持
 		if (config.url) {
-			cancelTokens[config.url] = axios.CancelToken.source();
-			config.cancelToken = cancelTokens[config.url].token;
+			const key = `${config.url.split("?")[0]}`;
+			cancelTokens[key] = axios.CancelToken.source();
+			config.cancelToken = cancelTokens[key].token;
 		}
 
 		return config;
